@@ -1,0 +1,13 @@
+#!/bin/bash
+
+while [ "$PWD" != '/' ]
+do
+  if [ -e ".auto-go" ]
+  then
+    ./.auto-go
+    exit 0
+  fi
+  cd ..
+done
+echo "Can't find auto-go" >&2
+exit 1
