@@ -1,7 +1,10 @@
 auto-go
 =======
 
-Small tool to automate running a command repeatedly (in vim) during development.
+Small tool to automate running a custom command repeatedly (in vim) during
+development.
+
+The command can be customized on a per-repository (or per-directory) basis.
 
 Installation
 ============
@@ -12,11 +15,16 @@ symlink it as ~/bin/,r for reasons which will be made obvious shortly.
 Add the following rules to your .vimrc:
 
 ```vim
+" Note: <C-O> will keep vim insert mode
+
+" if you prefer F4
 nnoremap <F4> :call AutoGo()<CR>
-" <C-O> will keep in insert mode
 inoremap <F4> <C-C>:call AutoGo()<CR>
-noremap <silent> ,r :call AutoGo()<CR>
-inoremap <silent> ,r <C-C>:call AutoGo()<CR>
+
+" if you prefer a leader
+let mapleader = ","
+noremap <silent> <Leader>r :call AutoGo()<CR>
+inoremap <silent> <Leader>r <C-C>:call AutoGo()<CR>
 func! AutoGo()
   exec "w"
   exec "!auto-go"
