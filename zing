@@ -1,0 +1,13 @@
+#!/bin/bash
+
+while [ "$PWD" != '/' ]
+do
+  if [ -e ".zing" ]
+  then
+    ./.zing
+    exit 0
+  fi
+  cd ..
+done
+echo "Can't find a .zing file in current or parent directories" >&2
+exit 1
